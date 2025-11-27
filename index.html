@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HACKATHON CEDESP: Manual de Bordo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>HACKATHON CEDESP 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIAVEIS GLOBAIS --- */
+        /* --- DESIGN SYSTEM --- */
         :root {
             --cor-lilas: #b26590;
             --cor-laranja: #e67a41;
             --cor-amarelo: #f0a325;
             --cor-offwhite: #F9F9F9;
-            --cor-preto: #010101;
+            --cor-preto: #111;
             --cor-cinza: #e5e7eb;
-            --font-stack: 'Inter', sans-serif;
             --header-height: 70px;
+            /* Fallback seguro caso a Sofia Pro não carregue */
+            --font-stack: 'Sofia Pro', 'Inter', sans-serif;
         }
 
-        * { box-sizing: border-box; scroll-behavior: smooth;}
+        * { box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: var(--font-stack);
@@ -29,120 +30,84 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER --- */
-        header {
-            background: linear-gradient(135deg, #4a148c 0%, var(--cor-lilas) 100%);
-            color: white;
-            padding: 60px 20px;
-            text-align: center;
-            border-bottom: 6px solid var(--cor-laranja);
-        }
-
-        h1 { 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            margin: 0; 
-            letter-spacing: -1px; 
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            line-height: 1.1;
-        }
-        
-        .tagline { 
-            background: var(--cor-laranja); 
-            color: white; 
-            display: inline-block; 
-            padding: 5px 15px; 
-            border-radius: 20px; 
-            font-weight: bold; 
-            margin-top: 15px; 
-            font-size: 0.9rem; 
-        }
-
-        .container { 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            padding: 20px; 
-        }
-
-        /* --- NAVEGAÇÃO --- */
+        /* --- NAVBAR --- */
         .navbar {
-            background: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #eee;
+            background: white; position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); height: var(--header-height);
+            display: flex; align-items: center; border-bottom: 1px solid #eee;
         }
-
         .nav-container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            width: 100%; max-width: 1000px; margin: 0 auto; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
         }
-
-        .logo { font-weight: 800; color: var(--cor-lilas); text-decoration: none; font-size: 1.2rem; }
-
+        .logo { font-weight: 900; color: var(--cor-lilas); text-decoration: none; font-size: 1.2rem; }
         .nav-menu { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
-
         .nav-link {
             color: #555; text-decoration: none; font-weight: 600; font-size: 0.9rem;
             padding: 8px 12px; border-radius: 4px; transition: all 0.3s ease;
         }
-
         .nav-link:hover { color: var(--cor-lilas); background: #fdf2f8; }
 
-        /* Hamburger */
+        /* HAMBURGER */
         .hamburger { display: none; cursor: pointer; width: 30px; height: 24px; position: relative; z-index: 1001; background: none; border: none; padding: 0; }
-        .bar { display: block; width: 100%; height: 3px; background-color: var(--cor-preto); margin: 5px auto; transition: all 0.3s ease-in-out; border-radius: 2px; }
-
+        .bar { display: block; width: 100%; height: 3px; background-color: var(--cor-preto); margin: 5px auto; transition: 0.3s; border-radius: 2px; }
         .hamburger.active .bar:nth-child(2) { opacity: 0; }
-        .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background-color: var(--cor-lilas); }
-        .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background-color: var(--cor-lilas); }
+        .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); background: var(--cor-lilas); }
+        .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); background: var(--cor-lilas); }
 
         @media (max-width: 768px) {
             .hamburger { display: block; }
             .nav-menu {
                 position: fixed; left: -100%; top: var(--header-height); gap: 0; flex-direction: column;
                 background-color: white; width: 100%; height: calc(100vh - var(--header-height));
-                text-align: center; transition: 0.3s ease-in-out; box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+                text-align: center; transition: 0.3s; box-shadow: 0 10px 10px rgba(0,0,0,0.05);
                 border-top: 1px solid #eee; overflow-y: auto; padding-top: 20px;
             }
-            .nav-item { margin: 0; border-bottom: 1px solid #f0f0f0; width: 100%; }
-            .nav-link { display: block; padding: 25px; font-size: 1.2rem; }
             .nav-menu.active { left: 0; }
+            .nav-link { display: block; padding: 20px; font-size: 1.1rem; border-bottom: 1px solid #f0f0f0; }
         }
 
-        /* --- CONTEÚDO --- */
+        /* --- HERO --- */
+        header.hero {
+            background: linear-gradient(135deg, #4a148c 0%, var(--cor-lilas) 100%);
+            color: white; padding: 60px 20px; text-align: center; border-bottom: 6px solid var(--cor-laranja);
+        }
+        h1 { font-weight: 900; text-transform: uppercase; margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; }
+        .tagline { background: var(--cor-laranja); color: white; display: inline-block; padding: 5px 15px; border-radius: 20px; font-weight: bold; margin-top: 15px; font-size: 0.9rem; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 16px; }
+
+        /* --- CONTEUDO --- */
         section { margin-top: 60px; scroll-margin-top: 100px; }
         h2 { color: var(--cor-lilas); font-size: clamp(1.5rem, 3vw, 2rem); border-left: 5px solid var(--cor-laranja); padding-left: 15px; margin-bottom: 30px; }
-        h3 { margin-top: 0; color: #333; font-size: 1.3rem; margin-bottom: 15px; }
-
-        .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid var(--cor-cinza); }
-
-        /* CARGOS E FLUXO */
-        .role-card { 
-            border-left: 4px solid #ddd; padding-left: 15px; margin-bottom: 20px; 
-        }
-        .role-title { font-weight: 800; color: var(--cor-lilas); text-transform: uppercase; display: block; margin-bottom: 5px;}
-        .communication { background: #fdfbf0; padding: 10px; border-radius: 6px; font-size: 0.9rem; margin-top: 10px; border: 1px solid #f7eebb; }
-
-        /* SETUP */
-        .setup-step { margin-bottom: 30px; border-bottom: 1px dashed #ddd; padding-bottom: 20px; }
-        .cmd { background: #000; color: rgb(255, 234, 0); padding: 10px; border-radius: 4px; font-family: monospace; display: block; margin: 10px 0; }
-        .btn-download { display: inline-block; background: var(--cor-lilas); color: white; padding: 10px 20px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 10px; }
+        h3 { margin-top: 0; color: #333; font-size: 1.2rem; font-weight: 800; }
         
-        /* ALERTAS */
-        .alert { background: #fff3cd; border: 1px solid #ffeeba; color: #856404; padding: 15px; border-radius: 6px; margin-top: 15px; }
+        .card { background: white; border-radius: 12px; padding: 25px; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border: 1px solid var(--cor-cinza); }
 
-        /* TECLAS */
-        kbd { background-color: #eee; border-radius: 3px; border: 1px solid #b4b4b4; box-shadow: 0 1px 1px rgba(0,0,0,.2); color: #333; font-size: .85em; font-weight: 700; line-height: 1; padding: 2px 4px; white-space: nowrap; }
+        /* --- SQUADS --- */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .team { border-top: 5px solid var(--cor-lilas); padding: 25px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .badge { display: inline-block; padding: 4px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; color: white; margin-bottom: 10px; text-transform: uppercase; }
+        .bg-prod { background: #2c3e50; } .bg-mob { background: var(--cor-lilas); } .bg-desk { background: var(--cor-laranja); } .bg-back { background: var(--cor-amarelo); color: black; }
+
+        /* --- TIMELINE DIÁRIA (Cards) --- */
+        .day-card {
+            border-left: 4px solid #ddd; padding-left: 20px; margin-bottom: 40px; position: relative;
+        }
+        .day-card.urgent { border-color: var(--cor-laranja); }
+        .day-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
+        .day-badge { background: #cbcbcb00; color: #f0259f; padding: 5px 15px; border-radius: 10px; font-weight: bold; font-size: 0.9rem; }
+        .day-title { font-weight: bold; color: #f0259f; }
+        
+        .task-list { display: grid; gap: 10px; }
+        .task { background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); display: flex; gap: 10px; align-items: flex-start; }
+        .task-badge { min-width: 80px; text-align: center; font-size: 0.75rem; padding: 2px 0; border-radius: 4px; color: white; font-weight: bold; }
+
+        /* --- SETUP --- */
+        .cmd { background: #1e1e1e; color: #dec34a; padding: 12px; border-radius: 6px; font-family: monospace; display: block; margin: 10px 0; word-break: break-all; }
+        .git-warning { background: #ffe4ca; border: 1px solid #ff9900; color: #9b7700; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; padding: 40px; margin-top: 50px; border-top: 1px solid #ddd; color: #666; font-size: 0.9rem; }
 
     </style>
 </head>
@@ -151,182 +116,292 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">CEDESP 2026</a>
-            
             <ul class="nav-menu">
-                <li class="nav-item"><a href="#cargos" class="nav-link">Cargos & Fluxo</a></li>
-                <li class="nav-item"><a href="#setup" class="nav-link">Instalação (Zero)</a></li>
-                <li class="nav-item"><a href="#scrum" class="nav-link">Rotina Scrum</a></li>
-                <li class="nav-item"><a href="#firebase" class="nav-link">Firebase</a></li>
+                <li class="nav-item"><a href="#squads" class="nav-link">Squads</a></li>
+                <li class="nav-item"><a href="#timeline" class="nav-link">Tarefas Diárias</a></li>
+                <li class="nav-item"><a href="#tech" class="nav-link">Design & Tech</a></li>
+                <li class="nav-item"><a href="#setup" class="nav-link">Setup</a></li>
             </ul>
-
-            <button class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
+            <button class="hamburger"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
         </div>
     </nav>
 
-    <header>
+    <header class="hero">
         <h1>Hackathon 9 Dias</h1>
         <div class="tagline">MANUAL DO DESENVOLVEDOR</div>
-        <p style="margin-top:20px; font-size:1.1rem; opacity:0.9;">Do "Zero Absoluto" ao Deploy</p>
+        <p style="margin-top:20px; opacity:0.9;">Guia Definitivo: Do Zero ao Deploy</p>
     </header>
 
     <div class="container">
 
-        <section id="cargos">
-            <h2>1. Organograma & Esteira de Produção</h2>
+        <section id="squads">
+            <h2>1. Organização das Squads (18 Alunos)</h2>
+            <p>Cada um tem seu papel. Entenda com quem você deve falar.</p>
+            
+            <div class="team-grid">
+                <div class="team" style="border-color: #2c3e50;">
+                    <span class="badge bg-prod">Equipe 0: Produto & UX (3)</span>
+                    <h3>Os "Norteadores" </h3>
+                    <p><strong>Missão:</strong> Qualidade e fluxo.</p>
+                    <ul>
+                        <li><strong>Lead:</strong> Aprova entregas diárias.</li>
+                        <li><strong>Design:</strong> Cria protótipos rápidos.</li>
+                        <li><strong>QA:</strong> Testa TUDO o que é codado.</li>
+                    </ul>
+                </div>
+
+                <div class="team">
+                    <span class="badge bg-mob">Equipe 1: Front Mobile (5)</span>
+                    <h3>App do Candidato</h3>
+                    <p><strong>Missão:</strong> Autoatendimento Ágil.</p>
+                    <ul>
+                        <li>Focam em telas pequenas (celular).</li>
+                        <li>Criam o formulário passo a passo.</li>
+                        <li>Criam a câmera de Selfie.</li>
+                    </ul>
+                </div>
+
+                <div class="team">
+                    <span class="badge bg-desk">Equipe 2: Front Desktop (5)</span>
+                    <h3>Painel do Atendente</h3>
+                    <p><strong>Missão:</strong> Validação Rápida.</p>
+                    <ul>
+                        <li>Focam em telas grandes (tabelas).</li>
+                        <li>Criam a lista de "Aguardando" em tempo real.</li>
+                        <li>Geram o PDF de impressão.</li>
+                    </ul>
+                </div>
+
+                <div class="team">
+                    <span class="badge bg-back">Equipe 3: Back-End (5)</span>
+                    <h3>Infra & Dados</h3>
+                    <p><strong>Missão:</strong> Segurança e Regras.</p>
+                    <ul>
+                        <li>Configuram o Firebase.</li>
+                        <li>Importam o CSV de dados antigos.</li>
+                        <li>Criam a "Transação de Vaga" (JS).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline">
+            <h2>2. Diário de Bordo (Cronograma)</h2>
+            <p>O que cada equipe deve entregar ao final de cada dia. Sem atrasos.</p>
+
+            <div class="day-card urgent">
+                <div class="day-header">
+                    <span class="day-badge">DIA 1</span>
+                    <span class="day-title">O Início (Setup & Hello World)</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-back">EQ 3</span>
+                        <span>Criar projeto no Firebase Console (Auth + Firestore + Storage).</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-mob">EQ 1</span>
+                        <span>Criar projeto React (Vite), limpar código padrão e subir "Hello World" no GitHub.</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-prod">EQ 0</span>
+                        <span>Definir CSS Global (Cores e Fontes) e passar para as equipes.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">DIA 2</span>
+                    <span class="day-title">Dados & Login</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-back">EQ 3</span>
+                        <span>Script NodeJS para importar o CSV de alunos antigos para o Firestore.</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-desk">EQ 2</span>
+                        <span>Criar tela de Login (Email/Senha) conectada ao Firebase Auth.</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-mob">EQ 1</span>
+                        <span>Criar tela inicial "Digite seu CPF" (Ainda sem validar no banco).</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">DIA 3</span>
+                    <span class="day-title">Navegação & Layout</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-mob">EQ 1</span>
+                        <span>Criar o "Wizard" (Passo a passo: Dados Pessoais -> Endereço).</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-desk">EQ 2</span>
+                        <span>Criar o Dashboard principal (Sidebar + Área de conteúdo vazia).</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">DIA 4</span>
+                    <span class="day-title">Integração (Lendo Dados)</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-mob">EQ 1</span>
+                        <span>Ao digitar CPF, buscar dados no Firestore e preencher o formulário automaticamente.</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-desk">EQ 2</span>
+                        <span>Ler a coleção `alunos` e exibir em uma tabela simples.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card urgent">
+                <div class="day-header">
+                    <span class="day-badge">DIA 5</span>
+                    <span class="day-title">O Coração (Transação de Vaga)</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-back">EQ 3</span>
+                        <span><strong>CRÍTICO:</strong> Criar a função `confirmarMatricula`. Ela deve checar vaga > 0 e descontar.</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-desk">EQ 2</span>
+                        <span>Botão "Aprovar" no painel que chama essa função da Equipe 3.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">DIA 6</span>
+                    <span class="day-title">Features Visuais</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-mob">EQ 1</span>
+                        <span>Componente de Câmera: Tirar selfie e salvar no Firebase Storage.</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-desk">EQ 2</span>
+                        <span>Exibir a foto do aluno na tabela de validação.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card">
+                <div class="day-header">
+                    <span class="day-badge">DIA 7</span>
+                    <span class="day-title">Impressão & Refino</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-desk">EQ 2</span>
+                        <span>Criar tela de "Ficha de Matrícula" com CSS `@media print`.</span>
+                    </div>
+                    <div class="task">
+                        <span class="task-badge bg-prod">EQ 0</span>
+                        <span>Testar fluxo completo: Celular -> Banco -> Desktop -> Impressão.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card urgent">
+                <div class="day-header">
+                    <span class="day-badge">DIA 8</span>
+                    <span class="day-title">Guerra (Bugfix)</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-prod">TODOS</span>
+                        <span>Teste de Estresse: Todos tentam matricular no mesmo curso ao mesmo tempo. O contador de vagas não pode ficar negativo!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="day-card urgent">
+                <div class="day-header">
+                    <span class="day-badge">DIA 9</span>
+                    <span class="day-title">Entrega Final</span>
+                </div>
+                <div class="task-list">
+                    <div class="task">
+                        <span class="task-badge bg-prod">TODOS</span>
+                        <span>Deploy no Vercel/Firebase Hosting. Apresentação.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech">
+            <h2>3. Tecnologias & Design</h2>
+            
             <div class="card">
-                <p>O desenvolvimento não é bagunçado. Ele segue uma <strong>Esteira Lógica</strong>. Entenda seu papel:</p>
-                
-                <div class="role-card" style="border-color: #2c3e50;">
-                    <span class="role-title">EQUIPE 0: PRODUTO & UX (Os Chefes)</span>
-                    <p><strong>O que fazem:</strong> Definem COMO a tela deve ser. Validam se está funcionando.</p>
-                    <div class="communication">
-                        🗣️ <strong>Com quem falam?</strong><br>
-                        Entregam o desenho para a <strong>Equipe 1 e 2</strong> (Front).<br>
-                        Cobram qualidade da <strong>Equipe 3</strong> (Back).
-                    </div>
+                <h3>Fonte Oficial: Sofia Pro</h3>
+                <p>Esta é a fonte da marca. Se não tivermos a licença web, usaremos a <code>Inter</code> como fallback.</p>
+                <div class="cmd" style="font-family: 'Sofia Pro', 'Inter', sans-serif;">
+                    font-family: 'Sofia Pro', 'Inter', sans-serif;
                 </div>
+            </div>
 
-                <div class="role-card" style="border-color: #e67a41;">
-                    <span class="role-title">EQUIPE 3: BACK-END & DADOS (A Fundação)</span>
-                    <p><strong>O que fazem:</strong> Criam a estrutura onde os dados moram. Configuram o Firebase. Importam o CSV.</p>
-                    <div class="communication">
-                        🗣️ <strong>Com quem falam?</strong><br>
-                        Avisam a <strong>Equipe 1 e 2</strong>: "O campo do nome no banco se chama <code>nome_completo</code>, usem esse nome no código!"
-                    </div>
+            <div class="card">
+                <h3>Ícones: Lucide React</h3>
+                <p>Não usaremos Google Icons. Usaremos <strong>Lucide</strong> (mais leve e moderno).</p>
+                <p>Instalação: <span class="cmd">npm install lucide-react</span></p>
+                <p>Exemplo de uso:</p>
+                <div class="cmd">
+                    import { Camera, User } from 'lucide-react';<br>
+                    &lt;Camera color="red" size={48} /&gt;
                 </div>
+            </div>
 
-                <div class="role-card" style="border-color: #b26590;">
-                    <span class="role-title">EQUIPE 1 & 2: FRONT-END (Os Construtores)</span>
-                    <p><strong>O que fazem:</strong> Criam o site que as pessoas veem (Botões, Cores, Formulários).</p>
-                    <div class="communication">
-                        🗣️ <strong>Com quem falam?</strong><br>
-                        Perguntam para a <strong>Equipe 3</strong>: "Como eu envio os dados para o banco?"<br>
-                        Perguntam para a <strong>Equipe 0</strong>: "Essa cor está certa?"
-                    </div>
+            <div class="card">
+                <h3>Paleta de Cores (Copiem no CSS)</h3>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <div style="background:#b26590; color:white; padding:10px; border-radius:4px;">#b26590 (Lilás)</div>
+                    <div style="background:#e67a41; color:white; padding:10px; border-radius:4px;">#e67a41 (Laranja)</div>
+                    <div style="background:#f0a325; color:black; padding:10px; border-radius:4px;">#f0a325 (Amarelo)</div>
+                    <div style="background:#F9F9F9; border:1px solid #ccc; padding:10px; border-radius:4px;">#F9F9F9 (Fundo)</div>
                 </div>
-
             </div>
         </section>
 
         <section id="setup">
-            <h2>2. Preparando o Terreno (Instalação)</h2>
-            <div class="card">
-                <p>Antes de codar, precisamos das ferramentas. Sigam essa ordem exata:</p>
-
-                <div class="setup-step">
-                    <h3>Passo A: O Editor de Código (VS Code)</h3>
-                    <p>Vamos usar o <strong>Visual Studio Code</strong>. Ele é o padrão da indústria.</p>
-                    <a href="https://code.visualstudio.com/download" target="_blank" class="btn-download">Baixar VS Code</a>
-                    <p style="margin-top:10px; font-size:0.9rem;">⚠️ <em>Dica: Instale a extensão "ES7+ React/Redux/React-Native snippets" dentro dele para ajudar.</em></p>
-                </div>
-
-                <div class="setup-step">
-                    <h3>Passo B: O Motor (Node.js)</h3>
-                    <p>O Node.js permite rodar JavaScript fora do navegador. Sem ele, nada funciona.</p>
-                    <p>Baixe a versão <strong>LTS (Recomendada)</strong>.</p>
-                    <a href="https://nodejs.org/en" target="_blank" class="btn-download">Baixar Node.js</a>
-                    <div class="alert">
-                        <strong>Verifique se instalou:</strong><br>
-                        Abra o VS Code. No menu superior, clique em <code>Terminal</code> -> <code>New Terminal</code>.<br>
-                        Digite: <span class="cmd">node -v</span>
-                        Se aparecer um número (ex: v18.16.0), deu certo!
-                    </div>
-                </div>
-
-                <div class="setup-step">
-                    <h3>Passo C: O Controle (Git)</h3>
-                    <p>Para salvar o código na nuvem e trabalhar em equipe.</p>
-                    <a href="https://git-scm.com/downloads" target="_blank" class="btn-download">Baixar Git</a>
-                    <p style="margin-top:10px;">Após instalar, configure seu nome no terminal:</p>
-                    <span class="cmd">git config --global user.name "Seu Nome"</span>
-                    <span class="cmd">git config --global user.email "seu@email.com"</span>
-                </div>
-
+            <h2>4. Setup e Git Seguro</h2>
+            <div class="git-warning">
+                <strong>⚠️ REGRA DE OURO DO GIT:</strong><br>
+                Equipe Mobile mexe SÓ na pasta <code>/mobile</code>.<br>
+                Equipe Desktop mexe SÓ na pasta <code>/desktop</code>.<br>
+                Isso evita conflitos!
             </div>
-        </section>
 
-        <section>
-            <h2>3. Dicionário de Sobrevivência</h2>
             <div class="card">
-                <p>Vocês vão usar muito a "Tela Preta" (Terminal). Aqui estão os comandos mágicos:</p>
-                <ul>
-                    <li><code>ls</code> (ou <code>dir</code> no Windows): Lista os arquivos da pasta atual.</li>
-                    <li><code>cd nome_da_pasta</code>: Entra em uma pasta.</li>
-                    <li><code>cd ..</code>: Volta para a pasta anterior.</li>
-                    <li><code>npm install</code>: Baixa as bibliotecas do projeto (A "Loja de Aplicativos" do código).</li>
-                    <li><code>npm run dev</code>: Liga o servidor para você ver o site rodando.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section>
-            <h2>4. Iniciando o Projeto (Mão na Massa)</h2>
-            <div class="card">
-                <p>Apenas <strong>UMA PESSOA</strong> da Equipe 1 ou 2 precisa fazer isso e subir no GitHub. Os outros vão apenas baixar (clonar).</p>
-                
-                <h3>Criando o App React com Vite</h3>
-                <p>No terminal do VS Code, na pasta onde você quer guardar o projeto:</p>
-                <span class="cmd">npm create vite@latest cedesp-sistema -- --template react</span>
-                
-                <p>Agora entre na pasta criada:</p>
-                <span class="cmd">cd cedesp-sistema</span>
-                
-                <p>Instale as dependências básicas:</p>
-                <span class="cmd">npm install</span>
-                
-                <p>Instale o Firebase e o Router (para navegar entre páginas):</p>
-                <span class="cmd">npm install firebase react-router-dom</span>
-
-                <p>Rode o projeto para ver se funcionou:</p>
-                <span class="cmd">npm run dev</span>
-                
-                <div class="alert">
-                    Se apareceu um link como <code>http://localhost:5173</code>, parabéns! Você é um programador. Clique nele com <kbd>Ctrl</kbd> pressionado.
-                </div>
-            </div>
-        </section>
-
-        <section id="scrum">
-            <h2>5. A Rotina Diária (Scrum)</h2>
-            <div class="card">
-                <p>Nós não temos chefe. Temos processos. Sigam isso todo dia:</p>
-                
-                <h3>🕒 1. Check-in (Primeiros 15 min)</h3>
-                <p>Todos em pé. Cada equipe responde:</p>
-                <ul>
-                    <li>O que fizemos ontem?</li>
-                    <li>O que vamos entregar HOJE até o fim da aula?</li>
-                    <li>Tem algo travando a gente? (Ex: "Equipe 3, cadê o banco?")</li>
-                </ul>
-
-                <h3>🔨 2. Execução (O Meio)</h3>
-                <p>Devs codam. UX/Produto testa e valida. Comunicação constante.</p>
-                <p><em>Regra: Se travou por 20min, peça ajuda. Use o ChatGPT para gerar o código que falta.</em></p>
-
-                <h3>🏁 3. Check-out (Últimos 20 min)</h3>
-                <p>Mostrem o que funcionou. Se o botão clica e faz algo, é vitória.</p>
-                <p>Atualizem o quadro de tarefas.</p>
-            </div>
-        </section>
-
-        <section id="firebase">
-            <h2>6. Guia Rápido Firebase (Equipe 3)</h2>
-            <div class="card">
-                <p>Passo a passo para criar o "cérebro" do sistema:</p>
+                <h3>Passo a Passo (Instalação)</h3>
                 <ol>
-                    <li>Vá em <strong>console.firebase.google.com</strong>.</li>
-                    <li>Crie projeto <code>cedesp-matricula</code>.</li>
-                    <li>Ative <strong>Firestore Database</strong> (Modo Teste).</li>
-                    <li>Ative <strong>Authentication</strong> (Email/Senha).</li>
-                    <li>Ative <strong>Storage</strong> (Modo Teste).</li>
-                    <li>Vá em Configurações -> App Web -> Copie o <code>firebaseConfig</code> e mande para a Equipe de Front-End no WhatsApp.</li>
+                    <li>Baixar e Instalar <strong>Node.js (LTS)</strong>.</li>
+                    <li>Baixar e Instalar <strong>VS Code</strong>.</li>
+                    <li>Baixar e Instalar <strong>Git</strong>.</li>
+                    <li>Criar pasta do projeto e abrir no VS Code.</li>
+                    <li>Rodar no terminal: <span class="cmd">npm install</span></li>
+                    <li>Rodar o projeto: <span class="cmd">npm run dev</span></li>
                 </ol>
             </div>
         </section>
+
+        <footer>
+            <p><strong>HACKATHON CEDESP 2026</strong></p>
+            <p>Foco, Disciplina e Código.</p>
+        </footer>
 
     </div>
 
